@@ -56,45 +56,45 @@ export const ResultsView = ({ companyName, onStartNew }: ResultsViewProps) => {
               Download as Word
             </Button>
           </div>
-          <div className="gradient-card rounded-xl p-8 shadow-card min-h-[600px]">
-            <div className="prose prose-invert max-w-none">
-              <h1 className="text-foreground">Investment Memo: {companyName}</h1>
+          <div className="bg-card rounded-xl p-8 shadow-card border border-border min-h-[600px]">
+            <div className="prose prose-lg max-w-none">
+              <h1 className="text-foreground mb-6 border-b border-border pb-4">Investment Memo: {companyName}</h1>
               
-              <h2 className="text-foreground">Executive Summary</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-foreground mt-8 mb-3">Executive Summary</h2>
+              <p className="text-foreground/90 leading-relaxed">
                 {companyName} represents a compelling investment opportunity in the technology sector. 
                 Based on our comprehensive due diligence, the company demonstrates strong fundamentals 
                 with robust revenue growth, healthy margins, and a defensible market position.
               </p>
 
-              <h2 className="text-foreground">Market Opportunity</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-foreground mt-8 mb-3">Market Opportunity</h2>
+              <p className="text-foreground/90 leading-relaxed">
                 The addressable market for {companyName}'s products and services is experiencing 
                 significant growth, driven by digital transformation trends and increasing demand 
                 for innovative solutions.
               </p>
 
-              <h2 className="text-foreground">Financial Analysis</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-foreground mt-8 mb-3">Financial Analysis</h2>
+              <p className="text-foreground/90 leading-relaxed">
                 Revenue growth has averaged 45% year-over-year over the past three years, with 
                 gross margins consistently above 70%. The company has demonstrated strong unit 
                 economics and a clear path to profitability.
               </p>
 
-              <h2 className="text-foreground">Management Team</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-foreground mt-8 mb-3">Management Team</h2>
+              <p className="text-foreground/90 leading-relaxed">
                 The leadership team brings deep domain expertise and a proven track record of 
                 execution. Key executives have successfully scaled similar businesses in the past.
               </p>
 
-              <h2 className="text-foreground">Risks and Mitigation</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-foreground mt-8 mb-3">Risks and Mitigation</h2>
+              <p className="text-foreground/90 leading-relaxed">
                 Primary risks include competitive pressure and market timing. However, the company's 
                 technological moat and strong customer relationships provide significant downside protection.
               </p>
 
-              <h2 className="text-foreground">Investment Recommendation</h2>
-              <p className="text-muted-foreground">
+              <h2 className="text-foreground mt-8 mb-3">Investment Recommendation</h2>
+              <p className="text-foreground/90 leading-relaxed">
                 We recommend proceeding with investment, subject to final due diligence on legal 
                 and regulatory matters. The risk-adjusted return profile is attractive at current valuations.
               </p>
