@@ -111,10 +111,10 @@ export const ResultsView = ({ companyName, onStartNew }: ResultsViewProps) => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[1, 2, 3, 4, 5, 6].map((slide) => (
-              <div key={slide} className="gradient-card rounded-lg p-6 shadow-card aspect-video flex flex-col justify-between">
+              <div key={slide} className="bg-card border border-border rounded-lg p-6 shadow-card aspect-video flex flex-col justify-between hover:border-primary/50 transition-all">
                 <div className="space-y-2">
-                  <div className="text-xs text-muted-foreground">Slide {slide}</div>
-                  <h3 className="text-lg font-semibold">
+                  <div className="text-xs font-medium text-muted-foreground">Slide {slide}</div>
+                  <h3 className="text-lg font-semibold text-foreground">
                     {slide === 1 && `${companyName} Investment Overview`}
                     {slide === 2 && 'Market Opportunity'}
                     {slide === 3 && 'Financial Highlights'}
@@ -123,10 +123,10 @@ export const ResultsView = ({ companyName, onStartNew }: ResultsViewProps) => {
                     {slide === 6 && 'Investment Recommendation'}
                   </h3>
                 </div>
-                <div className="space-y-1">
-                  <div className="h-2 bg-primary/20 rounded w-full" />
-                  <div className="h-2 bg-primary/20 rounded w-4/5" />
-                  <div className="h-2 bg-primary/20 rounded w-3/5" />
+                <div className="space-y-2 pt-4 border-t border-border/50">
+                  <div className="h-1.5 bg-primary/30 rounded w-full" />
+                  <div className="h-1.5 bg-primary/20 rounded w-4/5" />
+                  <div className="h-1.5 bg-primary/10 rounded w-3/5" />
                 </div>
               </div>
             ))}

@@ -119,32 +119,32 @@ export const UploadZone = ({ onFilesChange }: UploadZoneProps) => {
       </div>
 
       {files.length > 0 && (
-        <div className="space-y-2">
-          <h3 className="text-sm font-medium text-muted-foreground">Uploaded Files</h3>
+        <div className="space-y-3">
+          <h3 className="text-sm font-semibold text-foreground">Uploaded Files ({files.length})</h3>
           <div className="space-y-2">
             {files.map((uploadedFile) => (
               <div
                 key={uploadedFile.id}
-                className="flex items-center justify-between p-3 rounded-lg bg-card border border-border hover:border-primary/50 transition-all"
+                className="flex items-center justify-between p-4 rounded-lg bg-card border border-border hover:border-primary/50 transition-all shadow-sm"
               >
                 <div className="flex items-center gap-3">
-                  <div className={`p-2 rounded ${
+                  <div className={`p-2.5 rounded-lg ${
                     uploadedFile.type === 'financial' 
                       ? 'bg-accent/10 text-accent' 
                       : 'bg-primary/10 text-primary'
                   }`}>
-                    <File className="w-4 h-4" />
+                    <File className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium">{uploadedFile.file.name}</p>
+                    <p className="text-sm font-medium text-foreground">{uploadedFile.file.name}</p>
                     <p className="text-xs text-muted-foreground">
-                      {(uploadedFile.file.size / 1024).toFixed(1)} KB • {uploadedFile.type === 'financial' ? 'Financial' : 'Profile'}
+                      {(uploadedFile.file.size / 1024).toFixed(1)} KB • <span className="font-medium">{uploadedFile.type === 'financial' ? 'Financial' : 'Profile'}</span>
                     </p>
                   </div>
                 </div>
                 <button
                   onClick={() => removeFile(uploadedFile.id)}
-                  className="p-1 hover:bg-destructive/10 rounded transition-colors"
+                  className="p-2 hover:bg-destructive/10 rounded-lg transition-colors"
                 >
                   <X className="w-4 h-4 text-muted-foreground hover:text-destructive" />
                 </button>
