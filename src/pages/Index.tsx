@@ -55,8 +55,10 @@ const Index = () => {
     setViewState('processing');
   };
 
-  const handleProcessingComplete = () => {
+  const handleProcessingComplete = (memo: any, slides: any) => {
     setViewState('results');
+    // Store memo and slides data for ResultsView
+    // You can add state to store these if needed
   };
 
   const handleStartNew = () => {
@@ -95,7 +97,7 @@ const Index = () => {
             </div>
 
             {/* Input Form */}
-            <div className="gradient-card rounded-2xl p-8 shadow-elevated space-y-8">
+            <div className="bg-white rounded-2xl p-8 shadow-elevated space-y-8 text-gray-900">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="company" className="flex items-center gap-2">
@@ -127,9 +129,9 @@ const Index = () => {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-base">Upload Documents</Label>
+                <Label className="text-base">Upload Your Financial Documents</Label>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Company profiles (PDF, PPT, DOC) and financial statements (XLS, CSV)
+                  Company profiles (PDF or DOC) and financial statements (XLS, CSV)
                 </p>
                 <UploadZone onFilesChange={setFiles} />
               </div>
@@ -170,7 +172,12 @@ const Index = () => {
         )}
 
         {viewState === 'processing' && (
-          <ProcessingView onComplete={handleProcessingComplete} />
+          <ProcessingView 
+            onComplete={handleProcessingComplete}
+            companyName={companyName}
+            country={country}
+            files={files.map(f => f.file)}
+          />
         )}
 
         {viewState === 'results' && (

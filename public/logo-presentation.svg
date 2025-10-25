@@ -1,0 +1,69 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="highResGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A855F7;stop-opacity:1" />
+    </linearGradient>
+    <filter id="highResGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle with subtle gradient -->
+  <circle cx="200" cy="200" r="190" fill="white" stroke="url(#highResGradient)" stroke-width="3" opacity="0.05"/>
+  <circle cx="200" cy="200" r="180" fill="url(#highResGradient)" opacity="0.03"/>
+  
+  <!-- Head outline - high resolution -->
+  <path d="M200 50C230 50 260 70 280 100C300 130 296 170 280 200C260 220 240 230 200 230C160 230 140 220 120 200C104 170 100 130 120 100C140 70 170 50 200 50Z" 
+        stroke="url(#highResGradient)" 
+        stroke-width="6" 
+        fill="none"
+        filter="url(#highResGlow)"/>
+  
+  <!-- Detailed neural network circuit -->
+  <!-- Left nodes -->
+  <circle cx="120" cy="140" r="6" fill="url(#highResGradient)" filter="url(#highResGlow)"/>
+  <circle cx="120" cy="260" r="6" fill="url(#highResGradient)" filter="url(#highResGlow)"/>
+  
+  <!-- Central processing hub -->
+  <rect x="176" y="176" width="48" height="48" rx="12" fill="url(#highResGradient)" filter="url(#highResGlow)"/>
+  
+  <!-- Right nodes -->
+  <circle cx="280" cy="140" r="6" fill="url(#highResGradient)" filter="url(#highResGlow)"/>
+  <circle cx="280" cy="260" r="6" fill="url(#highResGradient)" filter="url(#highResGlow)"/>
+  
+  <!-- Primary circuit connections -->
+  <path d="M126 140L176 200" stroke="url(#highResGradient)" stroke-width="6" stroke-linecap="round" filter="url(#highResGlow)"/>
+  <path d="M126 260L176 224" stroke="url(#highResGradient)" stroke-width="6" stroke-linecap="round" filter="url(#highResGlow)"/>
+  <path d="M224 200L274 140" stroke="url(#highResGradient)" stroke-width="6" stroke-linecap="round" filter="url(#highResGlow)"/>
+  <path d="M224 224L274 260" stroke="url(#highResGradient)" stroke-width="6" stroke-linecap="round" filter="url(#highResGlow)"/>
+  
+  <!-- Secondary neural pathways -->
+  <path d="M126 140L200 100" stroke="url(#highResGradient)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M274 140L200 100" stroke="url(#highResGradient)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M126 260L200 300" stroke="url(#highResGradient)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M274 260L200 300" stroke="url(#highResGradient)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- Tertiary connections for complexity -->
+  <path d="M126 140L200 140" stroke="url(#highResGradient)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M274 140L200 140" stroke="url(#highResGradient)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M126 260L200 260" stroke="url(#highResGradient)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M274 260L200 260" stroke="url(#highResGradient)" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  
+  <!-- MindForge branding -->
+  <text x="200" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="url(#highResGradient)" filter="url(#shadow)">
+    MindForge
+  </text>
+  <text x="200" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="normal" fill="url(#highResGradient)" opacity="0.8">
+    AI-Powered Investment Analysis
+  </text>
+</svg>

@@ -58,7 +58,7 @@ export const ResultsView = ({ companyName, onStartNew }: ResultsViewProps) => {
           </div>
           <div className="bg-card rounded-xl p-8 shadow-card border border-border min-h-[600px]">
             <div className="prose prose-lg max-w-none">
-              <h1 className="text-foreground mb-6 border-b border-border pb-4">Investment Memo: {companyName}</h1>
+              <h1 className="text-foreground mb-6 border-b border-border pb-4 text-center">Investment Memo <br/> <span className="text-lg font-normal">{companyName}</span></h1>
               
               <h2 className="text-foreground mt-8 mb-3">Executive Summary</h2>
               <p className="text-foreground/90 leading-relaxed">

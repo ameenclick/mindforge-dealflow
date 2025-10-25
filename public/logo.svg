@@ -1,0 +1,32 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Head outline -->
+  <path d="M20 5C25 5 30 8 32 13C34 18 33 24 30 28C28 31 25 33 20 33C15 33 12 31 10 28C7 24 6 18 8 13C10 8 15 5 20 5Z" 
+        stroke="url(#brainGradient)" 
+        stroke-width="2" 
+        fill="none"/>
+  
+  <!-- Neural network circuit -->
+  <!-- Left nodes -->
+  <circle cx="12" cy="15" r="2" fill="url(#brainGradient)"/>
+  <circle cx="12" cy="25" r="2" fill="url(#brainGradient)"/>
+  
+  <!-- Central hub -->
+  <rect x="17" y="18" width="6" height="4" rx="2" fill="url(#brainGradient)"/>
+  
+  <!-- Right nodes -->
+  <circle cx="28" cy="15" r="2" fill="url(#brainGradient)"/>
+  <circle cx="28" cy="25" r="2" fill="url(#brainGradient)"/>
+  
+  <!-- Circuit connections -->
+  <path d="M14 15L17 20" stroke="url(#brainGradient)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M14 25L17 22" stroke="url(#brainGradient)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M23 20L26 15" stroke="url(#brainGradient)" stroke-width="2" stroke-linecap="round"/>
+  <path d="M23 22L26 25" stroke="url(#brainGradient)" stroke-width="2" stroke-linecap="round"/>
+</svg>

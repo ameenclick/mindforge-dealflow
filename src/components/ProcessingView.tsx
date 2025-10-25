@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Loader2, CheckCircle2, FileText, Presentation } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { useMemoGeneration } from "@/hooks/use-memo-generation";
 
 interface ProcessingStep {
   id: string;
@@ -9,61 +10,75 @@ interface ProcessingStep {
 }
 
 interface ProcessingViewProps {
-  onComplete: () => void;
+  onComplete: (memo: any, slides: any) => void;
+  companyName: string;
+  country: string;
+  files: File[];
 }
 
-export const ProcessingView = ({ onComplete }: ProcessingViewProps) => {
+export const ProcessingView = ({ onComplete, companyName, country, files }: ProcessingViewProps) => {
+  const { 
+    isLoading, 
+    memo, 
+    slides, 
+    error, 
+    progress: generationProgress, 
+    generateMemo 
+  } = useMemoGeneration({ companyName, country, files });
+
   const [progress, setProgress] = useState(0);
   const [steps, setSteps] = useState<ProcessingStep[]>([
-    { id: 'parse', label: 'Parsing documents', status: 'processing' },
+    { id: 'parse', label: 'Parsing documents', status: 'pending' },
     { id: 'extract', label: 'Extracting financial data', status: 'pending' },
     { id: 'analyze', label: 'AI analysis in progress', status: 'pending' },
     { id: 'memo', label: 'Drafting investment memo', status: 'pending' },
     { id: 'slides', label: 'Creating presentation slides', status: 'pending' },
   ]);
 
+  // Start memo generation when component mounts
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(onComplete, 500);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, 200);
+    generateMemo();
+  }, [generateMemo]);
 
-    return () => clearInterval(interval);
-  }, [onComplete]);
-
+  // Update progress based on generation steps
   useEffect(() => {
-    const updateSteps = () => {
-      const currentProgress = progress;
-      setSteps(prev => prev.map((step, index) => {
-        const stepProgress = (index / prev.length) * 100;
-        if (currentProgress >= stepProgress + 20) {
-          return { ...step, status: 'complete' as const };
-        } else if (currentProgress >= stepProgress) {
-          return { ...step, status: 'processing' as const };
-        }
-        return step;
-      }));
-    };
-
-    updateSteps();
-  }, [progress]);
+    if (generationProgress.step === 'extracting') {
+      setProgress(20);
+      setSteps(prev => prev.map(step => 
+        step.id === 'parse' ? { ...step, status: 'processing' } : step
+      ));
+    } else if (generationProgress.step === 'generating') {
+      setProgress(60);
+      setSteps(prev => prev.map(step => 
+        ['parse', 'extract', 'analyze'].includes(step.id) 
+          ? { ...step, status: 'complete' }
+          : step.id === 'memo' 
+          ? { ...step, status: 'processing' }
+          : step
+      ));
+    } else if (generationProgress.step === 'slides') {
+      setProgress(80);
+      setSteps(prev => prev.map(step => 
+        step.id === 'memo' ? { ...step, status: 'complete' } :
+        step.id === 'slides' ? { ...step, status: 'processing' } : step
+      ));
+    } else if (generationProgress.step === 'complete') {
+      setProgress(100);
+      setSteps(prev => prev.map(step => ({ ...step, status: 'complete' })));
+      setTimeout(() => onComplete(memo, slides), 500);
+    }
+  }, [generationProgress, memo, slides, onComplete]);
 
   return (
     <div className="max-w-2xl mx-auto">
-      <div className="gradient-card rounded-2xl p-8 shadow-elevated">
+      <div className="bg-light-foreground rounded-2xl p-8 shadow-elevated">
         <div className="text-center mb-8">
           <div className="inline-flex p-4 rounded-full bg-primary/10 mb-4 animate-float">
             <Loader2 className="w-8 h-8 text-primary animate-spin" />
           </div>
           <h2 className="text-2xl font-bold mb-2">Processing Your Analysis</h2>
           <p className="text-muted-foreground">
-            Our AI is analyzing your documents and generating insights
+            {error ? `Error: ${error}` : generationProgress.message}
           </p>
         </div>
 
